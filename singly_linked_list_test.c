@@ -11,14 +11,30 @@
 
 static void test_is_singly_linked_list_empty_identifies_empty_list_correctly()
 {
+    // arrange
     struct node *head = malloc(sizeof(*head));
-    assert(!is_singly_linked_list_empty(head));
+
+    // act
+    int is_empty = is_singly_linked_list_empty(head);
+
+    // assert
+    assert(!is_empty);
+
+    // free memory
 }
 
 static void test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly()
 {
+    // arrange
     struct node *head = NULL;
-    assert(is_singly_linked_list_empty(head));
+
+    // act
+    int is_empty = is_singly_linked_list_empty(head);
+
+    // assert
+    assert(is_empty);
+
+    // free memory
 }
 
 //====================================================================================================
@@ -32,41 +48,72 @@ static void test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly
 
 static void test_get_singly_linked_list_tail_node_from_empty_list_correctly()
 {
+    // arrange
     struct node *head = NULL;
-    assert(get_singly_linked_list_tail_node(head) == NULL);
+
+    // act
+    struct node *tail = get_singly_linked_list_tail_node(head);
+    
+    // assert
+    assert(tail == NULL);
+
+    // free memory
 }
 
 static void test_get_singly_linked_list_tail_node_from_single_node_list_correctly()
 {
+    // arrange
     struct node *head = malloc(sizeof(*head));
     head->next = NULL;
-    assert(get_singly_linked_list_tail_node(head) == head);
 
+    // act
+    struct node *tail = get_singly_linked_list_tail_node(head);
+
+    // assert
+    assert(tail == head);
+
+    // free memory
     free(head);
 }
 
 static void test_get_singly_linked_list_tail_node_from_length_two_list_correctly()
 {
+    // arrange
     struct node *head = malloc(sizeof(*head));
     struct node *tail = malloc(sizeof(*tail));
+
     head->next = tail;
     tail->next = NULL;
-    assert(get_singly_linked_list_tail_node(head) == tail);
 
+    // act
+    struct node *gotten_tail = get_singly_linked_list_tail_node(head);
+
+    // assert
+    assert(gotten_tail == tail);
+
+    // free memory
     free(head);
     free(tail);
 }
 
 static void test_get_singly_linked_list_tail_node_from_length_three_list_correctly()
 {
+    // arrange
     struct node *head = malloc(sizeof(*head));
     struct node *middle = malloc(sizeof(*middle));
     struct node *tail = malloc(sizeof(*tail));
+
     head->next = middle;
     middle->next = tail;
     tail->next = NULL;
-    assert(get_singly_linked_list_tail_node(head) == tail);
 
+    // act
+    struct node *gotten_tail = get_singly_linked_list_tail_node(head);
+
+    // assert
+    assert(gotten_tail == tail);
+
+    // free memory
     free(head);
     free(middle);
     free(tail);
@@ -82,58 +129,78 @@ static void test_get_singly_linked_list_tail_node_from_length_three_list_correct
 
 static void test_create_single_node_list_from_empty_list_using_append_singly_linked_list_node_to_back()
 {
-    struct node *head = NULL;
+    // arrange
+    struct node *original_head = NULL;
     int *data = malloc(sizeof(*data));
 
-    head = append_singly_linked_list_node_to_back(head, (void *)data);
+    // act
+    struct node *head_after_append = append_singly_linked_list_node_to_back(original_head, (void *)data);
 
-    assert(head != NULL);
-    assert(head->next == NULL);
-    assert(head->data != NULL);
+    // assert
+    assert(head_after_append != original_head);
+    assert(head_after_append->next == NULL);
+    assert(head_after_append->data != NULL);
 
-    free(head);
+    // free memory
+    free(head_after_append);
     free(data);
 }
 
 static void test_create_length_two_list_from_empty_list_using_append_singly_linked_list_node_to_back()
 {
-    struct node *head = NULL;
+    // arrange
+    struct node *original_head = NULL;
     int *data = malloc(sizeof(*data));
 
-    head = append_singly_linked_list_node_to_back(head, (void *)data);
-    assert(append_singly_linked_list_node_to_back(head, (void *)data) == head);
+    // act
+    struct node *head_after_first_append = append_singly_linked_list_node_to_back(original_head, (void *)data);
+    struct node *head_after_second_append = append_singly_linked_list_node_to_back(head_after_first_append, (void *)data);
 
-    assert(head != NULL);
-    assert(head->next != NULL);
-    assert(head->data != NULL);
-    assert(head->next->data != NULL);
-    assert(head->next->next == NULL);
+    // assert
+    assert(head_after_first_append != original_head);
+    assert(head_after_first_append == head_after_second_append);
 
-    free(head->next);
-    free(head);
+    assert(head_after_second_append->next != NULL);
+    assert(head_after_second_append->data != NULL);
+
+    assert(head_after_second_append->next->data != NULL);
+    assert(head_after_second_append->next->next == NULL);
+
+    // free memory
+    free(head_after_second_append->next);
+    free(head_after_second_append);
     free(data);
 }
 
 static void test_create_length_three_list_from_empty_list_using_append_singly_linked_list_node_to_back()
 {
-    struct node *head = NULL;
+    // arrange
+    struct node *original_head = NULL;
     int *data = malloc(sizeof(*data));
 
-    head = append_singly_linked_list_node_to_back(head, (void *)data);
-    assert(append_singly_linked_list_node_to_back(head, (void *)data) == head);
-    assert(append_singly_linked_list_node_to_back(head, (void *)data) == head);
+    // act
+    struct node *head_after_first_append = append_singly_linked_list_node_to_back(original_head, (void *)data);
+    struct node *head_after_second_append = append_singly_linked_list_node_to_back(head_after_first_append, (void *)data);
+    struct node *head_after_third_append = append_singly_linked_list_node_to_back(head_after_second_append, (void *)data);
 
-    assert(head != NULL);
-    assert(head->next != NULL);
-    assert(head->data != NULL);
-    assert(head->next->data != NULL);
-    assert(head->next->next != NULL);
-    assert(head->next->next->data != NULL);
-    assert(head->next->next->next == NULL);
+    // assert
+    assert(head_after_first_append != original_head);
+    assert(head_after_first_append == head_after_second_append);
+    assert(head_after_second_append == head_after_third_append);
 
-    free(head->next->next);
-    free(head->next);
-    free(head);
+    assert(head_after_third_append->next != NULL);
+    assert(head_after_third_append->data != NULL);
+
+    assert(head_after_third_append->next->data != NULL);
+    assert(head_after_third_append->next->next != NULL);
+    
+    assert(head_after_third_append->next->next->data != NULL);
+    assert(head_after_third_append->next->next->next == NULL);
+
+    // free memory
+    free(head_after_third_append->next->next);
+    free(head_after_third_append->next);
+    free(head_after_third_append);
     free(data);
 }
 
