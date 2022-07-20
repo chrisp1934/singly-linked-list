@@ -47,6 +47,24 @@ int is_singly_linked_list_empty(struct node *head);
 int get_singly_linked_list_length(struct node *head);
 
 //====================================================================================================
+//  create_new_singly_linked_list_node
+//
+//  This function creates a new singly linked list.
+//
+//  Arguments:
+//      void *data - The memory address of the data to be placed in the first node (head) of the 
+//                   singly linked list.
+//
+//  Return Value:
+//      struct node * - This function returns the memory address of the head of the singly linked
+//                      list after successful execution and NULL after an error.
+//
+//  Time Complexity:
+//      O(1) - Linear Time
+//====================================================================================================
+struct node *create_new_singly_linked_list_node(void *data);
+
+//====================================================================================================
 //  get_singly_linked_list_tail_node
 //
 //  This function gets the tail node in a singly linked list.
@@ -73,12 +91,30 @@ struct node *get_singly_linked_list_tail_node(struct node *head);
 //      void *data        - The memory address of the data.
 //
 //  Return Value:
-//      struct node * - This function returns the memory address of the head of the singly linked list
-//                      after successful execution and NULL after an error.
+//      struct node * - This function returns the memory address of the head of the singly linked
+//                      list after successful execution and NULL after an error.
 //
 //  Time Complexity:
 //      O(n) - Linear Time
 //====================================================================================================
 struct node *append_singly_linked_list_node_to_back(struct node *head, void *data);
+
+//====================================================================================================
+//  append_singly_linked_list_node_to_front
+//
+//  This function adds a new node to a singly linked list at the front of the list.
+//
+//  Arguments:
+//      struct node *head - The memory address of the first node in the list.
+//      void *data        - The memory address of the data.
+//
+//  Return Value:
+//      struct node * - This function returns the memory address of the head of the singly linked
+//                      list after successful execution and NULL after an error.
+//
+//  Time Complexity:
+//      O(1) - Contsant Time
+//====================================================================================================
+struct node *append_singly_linked_list_node_to_front(struct node *head, void *data);
 
 #endif
