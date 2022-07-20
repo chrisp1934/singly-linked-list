@@ -9,15 +9,12 @@ int get_singly_linked_list_length(struct node *head)
 {
     int length = 0;
 
-    if (!is_singly_linked_list_empty(head))
+    while (head != NULL)
     {
-        do
-        {
-            length++;
-            head = head->next;
-        } while (head != NULL);
+        length++;
+        head = head->next;
     }
-
+    
     return (length);
 }
 
