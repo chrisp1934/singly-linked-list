@@ -3,6 +3,12 @@
 #include "singly_linked_list.h"
 
 //====================================================================================================
+//
+//  GETTING LIST PROPERTIES
+//
+//====================================================================================================
+
+//====================================================================================================
 //  test_is_singly_linked_list_empty_identifies_empty_list_correctly,
 //  test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly
 //
@@ -120,49 +126,6 @@ static void test_get_singly_linked_list_length_of_length_three_list_correctly()
 }
 
 //====================================================================================================
-//  test_create_new_singly_linked_list_node_with_unknown_data,
-//  test_create_new_singly_linked_list_node_with_signed_int_data
-//
-//  The unit tests for create_new_singly_linked_list
-//====================================================================================================
-
-static void test_create_new_singly_linked_list_node_with_unknown_data()
-{
-    // arrange
-    void *data = NULL;
-
-    // act
-    struct node *head = create_new_singly_linked_list_node(data);
-
-    // assert
-    assert(head != NULL);
-    assert(head->next == NULL);
-    assert(head->data == NULL);
-
-    // teardown
-    free(head);
-}
-
-static void test_create_new_singly_linked_list_node_with_signed_int_data()
-{
-    // arrange
-    int *data = malloc(sizeof(*data));
-    *data = 25;
-
-    // act
-    struct node *head = create_new_singly_linked_list_node((void *)data);
-
-    // assert
-    assert(head != NULL);
-    assert(head->next == NULL);
-    assert(*((int *)head->data) == 25);
-
-    // teardown
-    free(head);
-    free(data);
-}
-
-//====================================================================================================
 //  test_get_singly_linked_list_tail_node_from_empty_list_correctly,
 //  test_get_singly_linked_list_tail_node_from_single_node_list_correctly,
 //  test_get_singly_linked_list_tail_node_from_length_two_list_correctly,
@@ -243,6 +206,67 @@ static void test_get_singly_linked_list_tail_node_from_length_three_list_correct
     free(middle);
     free(tail);
 }
+
+//====================================================================================================
+//
+//  SETTING LIST PROPERTIES
+//
+//====================================================================================================
+
+//====================================================================================================
+//
+//  BASIC NODE MODIFICATIONS
+//
+//====================================================================================================
+
+//====================================================================================================
+//  test_create_new_singly_linked_list_node_with_unknown_data,
+//  test_create_new_singly_linked_list_node_with_signed_int_data
+//
+//  The unit tests for create_new_singly_linked_list
+//====================================================================================================
+
+static void test_create_new_singly_linked_list_node_with_unknown_data()
+{
+    // arrange
+    void *data = NULL;
+
+    // act
+    struct node *head = create_new_singly_linked_list_node(data);
+
+    // assert
+    assert(head != NULL);
+    assert(head->next == NULL);
+    assert(head->data == NULL);
+
+    // teardown
+    free(head);
+}
+
+static void test_create_new_singly_linked_list_node_with_signed_int_data()
+{
+    // arrange
+    int *data = malloc(sizeof(*data));
+    *data = 25;
+
+    // act
+    struct node *head = create_new_singly_linked_list_node((void *)data);
+
+    // assert
+    assert(head != NULL);
+    assert(head->next == NULL);
+    assert(*((int *)head->data) == 25);
+
+    // teardown
+    free(head);
+    free(data);
+}
+
+//====================================================================================================
+//
+//  BASIC LIST MODIFICATIONS
+//
+//====================================================================================================
 
 //====================================================================================================
 //  test_create_single_node_list_from_empty_list_using_append_singly_linked_list_node_to_back,
@@ -378,6 +402,8 @@ static void test_create_length_two_list_from_length_one_list_using_append_singly
 
 int main(void)
 {
+    // GETTING LIST PROPERTIES
+
     // is_singly_linked_list_empty
     test_is_singly_linked_list_empty_identifies_empty_list_correctly();
     test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly();
@@ -388,10 +414,16 @@ int main(void)
     test_get_singly_linked_list_length_of_length_two_list_correctly();
     test_get_singly_linked_list_length_of_length_three_list_correctly();
 
+    // SETTING LIST PROPERTIES
+
+    // BASIC NODE MODIFICATIONS
+
     // create_new_singly_linked_list_node
     test_create_new_singly_linked_list_node_with_unknown_data();
     test_create_new_singly_linked_list_node_with_signed_int_data();
 
+    // BASIC LIST MODIFICATIONS
+    
     // get_singly_linked_list_tail_node
     test_get_singly_linked_list_tail_node_from_empty_list_correctly();
     test_get_singly_linked_list_tail_node_from_single_node_list_correctly();

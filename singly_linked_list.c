@@ -14,7 +14,7 @@ static void set_new_node_fields(struct node *n, void *data)
 
 //====================================================================================================
 //
-//  LIBRARY FUNCTIONS
+//  GETTING LIST PROPERTIES
 //
 //====================================================================================================
 
@@ -36,14 +36,6 @@ int get_singly_linked_list_length(struct node *head)
     return (length);
 }
 
-struct node *create_new_singly_linked_list_node(void *data)
-{
-    struct node *n = malloc(sizeof(*n));
-    set_new_node_fields(n, data);
-
-    return (n);
-}
-
 struct node *get_singly_linked_list_tail_node(struct node *head)
 {
     if (!is_singly_linked_list_empty(head))
@@ -56,6 +48,32 @@ struct node *get_singly_linked_list_tail_node(struct node *head)
 
     return (head);
 }
+
+//====================================================================================================
+//
+//  SETTING LIST PROPERTIES
+//
+//====================================================================================================
+
+//====================================================================================================
+//
+//  BASIC NODE MODIFICATIONS
+//
+//====================================================================================================
+
+struct node *create_new_singly_linked_list_node(void *data)
+{
+    struct node *n = malloc(sizeof(*n));
+    set_new_node_fields(n, data);
+
+    return (n);
+}
+
+//====================================================================================================
+//
+//  BASIC LIST MODIFICATIONS
+//
+//====================================================================================================
 
 struct node *append_singly_linked_list_node_to_back(struct node *head, void *data)
 {

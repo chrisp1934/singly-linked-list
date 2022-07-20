@@ -4,15 +4,32 @@
 #include <stdlib.h>
 
 //====================================================================================================
+//
+//  STRUCTS/ENUMS/UNIONS
+//
+//====================================================================================================
+
+//====================================================================================================
 //  node
 //
-//  TODO: FILL IN
+//  This structure represents a node in a singly linked list.
+//
+//  Fields:
+//      void *data        - The memory address of the data in the node.
+//      struct node *next - The memory address of the next node in the list. It equals NULL if there
+//                          is no next node in the list.
 //====================================================================================================
 struct node
 {
     void *data;
     struct node *next;
 } node;
+
+//====================================================================================================
+//
+//  GETTING LIST PROPERTIES
+//
+//====================================================================================================
 
 //====================================================================================================
 //  is_list_empty
@@ -47,24 +64,6 @@ int is_singly_linked_list_empty(struct node *head);
 int get_singly_linked_list_length(struct node *head);
 
 //====================================================================================================
-//  create_new_singly_linked_list_node
-//
-//  This function creates a new singly linked list.
-//
-//  Arguments:
-//      void *data - The memory address of the data to be placed in the first node (head) of the 
-//                   singly linked list.
-//
-//  Return Value:
-//      struct node * - This function returns the memory address of the head of the singly linked
-//                      list after successful execution and NULL after an error.
-//
-//  Time Complexity:
-//      O(1) - Linear Time
-//====================================================================================================
-struct node *create_new_singly_linked_list_node(void *data);
-
-//====================================================================================================
 //  get_singly_linked_list_tail_node
 //
 //  This function gets the tail node in a singly linked list.
@@ -80,6 +79,42 @@ struct node *create_new_singly_linked_list_node(void *data);
 //      O(n) - Linear Time
 //====================================================================================================
 struct node *get_singly_linked_list_tail_node(struct node *head);
+
+//====================================================================================================
+//
+//  SETTING LIST PROPERTIES
+//
+//====================================================================================================
+
+//====================================================================================================
+//
+//  BASIC NODE MODIFICATIONS
+//
+//====================================================================================================
+
+//====================================================================================================
+//  create_new_singly_linked_list_node
+//
+//  This function creates a new singly linked list.
+//
+//  Arguments:
+//      void *data - The memory address of the data to be placed in the first node (head) of the 
+//                   singly linked list.
+//
+//  Return Value:
+//      struct node * - This function returns the memory address of the head of the singly linked
+//                      list after successful execution and NULL after an error.
+//
+//  Time Complexity:
+//      O(1) - Constant Time
+//====================================================================================================
+struct node *create_new_singly_linked_list_node(void *data);
+
+//====================================================================================================
+//
+//  BASIC LIST MODIFICATIONS
+//
+//====================================================================================================
 
 //====================================================================================================
 //  append_singly_linked_list_node_to_back
