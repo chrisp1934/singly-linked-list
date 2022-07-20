@@ -20,7 +20,7 @@ static void test_is_singly_linked_list_empty_identifies_empty_list_correctly()
     // assert
     assert(!is_empty);
 
-    // free memory
+    // teardown
 }
 
 static void test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly()
@@ -34,7 +34,7 @@ static void test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly
     // assert
     assert(is_empty);
 
-    // free memory
+    // teardown
 }
 
 //====================================================================================================
@@ -57,7 +57,7 @@ static void test_get_singly_linked_list_tail_node_from_empty_list_correctly()
     // assert
     assert(tail == NULL);
 
-    // free memory
+    // teardown
 }
 
 static void test_get_singly_linked_list_tail_node_from_single_node_list_correctly()
@@ -72,7 +72,7 @@ static void test_get_singly_linked_list_tail_node_from_single_node_list_correctl
     // assert
     assert(tail == head);
 
-    // free memory
+    // teardown
     free(head);
 }
 
@@ -91,7 +91,7 @@ static void test_get_singly_linked_list_tail_node_from_length_two_list_correctly
     // assert
     assert(gotten_tail == tail);
 
-    // free memory
+    // teardown
     free(head);
     free(tail);
 }
@@ -113,7 +113,7 @@ static void test_get_singly_linked_list_tail_node_from_length_three_list_correct
     // assert
     assert(gotten_tail == tail);
 
-    // free memory
+    // teardown
     free(head);
     free(middle);
     free(tail);
@@ -121,8 +121,8 @@ static void test_get_singly_linked_list_tail_node_from_length_three_list_correct
 
 //====================================================================================================
 //  test_create_single_node_list_from_empty_list_using_append_singly_linked_list_node_to_back,
-//  test_create_length_two_list_from_empty_list_using_append_singly_linked_list_node_to_back,
-//  test_create_length_three_list_from_empty_list_using_append_singly_linked_list_node_to_back
+//  test_create_length_two_list_from_length_one_list_using_append_singly_linked_list_node_to_back,
+//  test_create_length_three_list_length_two_list_using_append_singly_linked_list_node_to_back
 //
 //  The unit tests for append_singly_linked_list_node_to_back
 //====================================================================================================
@@ -139,68 +139,60 @@ static void test_create_single_node_list_from_empty_list_using_append_singly_lin
     // assert
     assert(head_after_append != original_head);
     assert(head_after_append->next == NULL);
-    assert(head_after_append->data != NULL);
+    assert(head_after_append->data == data);
 
-    // free memory
+    // teardown
     free(head_after_append);
     free(data);
 }
 
-static void test_create_length_two_list_from_empty_list_using_append_singly_linked_list_node_to_back()
+static void test_create_length_two_list_from_length_one_list_using_append_singly_linked_list_node_to_back()
 {
     // arrange
-    struct node *original_head = NULL;
+    struct node *head = malloc(sizeof(*head));
     int *data = malloc(sizeof(*data));
 
+    head->data = data;
+    head->next = NULL;
+
     // act
-    struct node *head_after_first_append = append_singly_linked_list_node_to_back(original_head, (void *)data);
-    struct node *head_after_second_append = append_singly_linked_list_node_to_back(head_after_first_append, (void *)data);
+    struct node *head_after_append = append_singly_linked_list_node_to_back(head, (void *)data);
 
     // assert
-    assert(head_after_first_append != original_head);
-    assert(head_after_first_append == head_after_second_append);
+    assert(head_after_append == head);
+    assert(head->next != NULL);
+    assert(head->next->data == data);
 
-    assert(head_after_second_append->next != NULL);
-    assert(head_after_second_append->data != NULL);
-
-    assert(head_after_second_append->next->data != NULL);
-    assert(head_after_second_append->next->next == NULL);
-
-    // free memory
-    free(head_after_second_append->next);
-    free(head_after_second_append);
+    // teardown
+    free(head->next);
+    free(head);
     free(data);
 }
 
-static void test_create_length_three_list_from_empty_list_using_append_singly_linked_list_node_to_back()
+static void test_create_length_three_list_length_two_list_using_append_singly_linked_list_node_to_back()
 {
     // arrange
-    struct node *original_head = NULL;
+    struct node *head = malloc(sizeof(*head));
+    struct node *second = malloc(sizeof(*second));
     int *data = malloc(sizeof(*data));
 
+    head->data = data;
+    head->next = second;
+    second->data = data;
+    second->next = NULL;
+
     // act
-    struct node *head_after_first_append = append_singly_linked_list_node_to_back(original_head, (void *)data);
-    struct node *head_after_second_append = append_singly_linked_list_node_to_back(head_after_first_append, (void *)data);
-    struct node *head_after_third_append = append_singly_linked_list_node_to_back(head_after_second_append, (void *)data);
+    struct node *head_after_append = append_singly_linked_list_node_to_back(head, (void *)data);
 
     // assert
-    assert(head_after_first_append != original_head);
-    assert(head_after_first_append == head_after_second_append);
-    assert(head_after_second_append == head_after_third_append);
+    assert(head_after_append == head);
+    assert(second->next != NULL);
+    assert(second->next->data == data);
 
-    assert(head_after_third_append->next != NULL);
-    assert(head_after_third_append->data != NULL);
-
-    assert(head_after_third_append->next->data != NULL);
-    assert(head_after_third_append->next->next != NULL);
-    
-    assert(head_after_third_append->next->next->data != NULL);
-    assert(head_after_third_append->next->next->next == NULL);
-
-    // free memory
-    free(head_after_third_append->next->next);
-    free(head_after_third_append->next);
-    free(head_after_third_append);
+    // teardown
+    free(second->next);
+    free(second);
+    free(head);
     free(data);
 }
 
@@ -222,8 +214,8 @@ int main(void)
 
     // append_singly_linked_list_node_to_back
     test_create_single_node_list_from_empty_list_using_append_singly_linked_list_node_to_back();
-    test_create_length_two_list_from_empty_list_using_append_singly_linked_list_node_to_back();
-    test_create_length_three_list_from_empty_list_using_append_singly_linked_list_node_to_back();
+    test_create_length_two_list_from_length_one_list_using_append_singly_linked_list_node_to_back();
+    test_create_length_three_list_length_two_list_using_append_singly_linked_list_node_to_back();
 
     return (0);
 }
