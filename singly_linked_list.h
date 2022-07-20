@@ -24,8 +24,27 @@ struct node
 //
 //  Return Value:
 //      int - This function returns 1 if the list is empty and 0 if it is not.
+//
+//  Time Complexity:
+//      O(1) - Constant Time
 //====================================================================================================
 int is_singly_linked_list_empty(struct node *head);
+
+//====================================================================================================
+//  get_singly_linked_list_length
+//
+//  This function gets the length of a singly linked list.
+//
+//  Arguments:
+//      struct node *head - The memory address of the first node in the list.
+//
+//  Return Value:
+//      int - This function returns the length of the singly linked list.
+//
+//  Time Complexity:
+//      O(n) - Linear Time
+//====================================================================================================
+int get_singly_linked_list_length(struct node *head);
 
 //====================================================================================================
 //  get_singly_linked_list_tail_node
@@ -38,6 +57,9 @@ int is_singly_linked_list_empty(struct node *head);
 //  Return Value:
 //      struct node * - This function returns the memory address of the tail node in a singly linked
 //                      after successful execution and NULL after an error.
+//
+//  Time Complexity:
+//      O(n) - Linear Time
 //====================================================================================================
 struct node *get_singly_linked_list_tail_node(struct node *head);
 
@@ -53,6 +75,9 @@ struct node *get_singly_linked_list_tail_node(struct node *head);
 //  Return Value:
 //      struct node * - This function returns the memory address of the head of the singly linked list
 //                      after successful execution and NULL after an error.
+//
+//  Time Complexity:
+//      O(n) - Linear Time
 //====================================================================================================
 struct node *append_singly_linked_list_node_to_back(struct node *head, void *data);
 

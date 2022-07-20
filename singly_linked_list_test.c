@@ -38,6 +38,88 @@ static void test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly
 }
 
 //====================================================================================================
+//  test_get_singly_linked_list_length_of_empty_list_correctly,
+//  test_get_singly_linked_list_length_of_single_node_list_correctly,
+//  test_get_singly_linked_list_length_of_length_two_list_correctly,
+//  test_get_singly_linked_list_length_of_length_three_list_correctly
+//
+//  The unit tests for get_singly_linked_list_length
+//====================================================================================================
+
+static void test_get_singly_linked_list_length_of_empty_list_correctly()
+{
+    // arrange
+    struct node *head = NULL;
+
+    // act
+    int length = get_singly_linked_list_length(head);
+
+    // assert
+    assert(length == 0);
+
+    // teardown
+}
+
+static void test_get_singly_linked_list_length_of_single_node_list_correctly()
+{
+    // arrange
+    struct node *head = malloc(sizeof(*head));
+    head->next = NULL;
+
+    // act
+    int length = get_singly_linked_list_length(head);
+
+    // assert
+    assert(length == 1);
+
+    // teardown
+    free(head);
+}
+
+static void test_get_singly_linked_list_length_of_length_two_list_correctly()
+{
+    // arrange
+    struct node *head = malloc(sizeof(*head));
+    struct node *tail = malloc(sizeof(*tail));
+
+    head->next = tail;
+    tail->next = NULL;
+
+    // act
+    int length = get_singly_linked_list_length(head);
+
+    // assert
+    assert(length == 2);
+
+    // teardown
+    free(head);
+    free(tail);
+}
+
+static void test_get_singly_linked_list_length_of_length_three_list_correctly()
+{
+    // arrange
+    struct node *head = malloc(sizeof(*head));
+    struct node *middle = malloc(sizeof(*middle));
+    struct node *tail = malloc(sizeof(*tail));
+
+    head->next = middle;
+    middle->next = tail;
+    tail->next = NULL;
+
+    // act
+    int length = get_singly_linked_list_length(head);
+
+    // assert
+    assert(length == 3);
+
+    // teardown
+    free(head);
+    free(middle);
+    free(tail);
+}
+
+//====================================================================================================
 //  test_get_singly_linked_list_tail_node_from_empty_list_correctly,
 //  test_get_singly_linked_list_tail_node_from_single_node_list_correctly,
 //  test_get_singly_linked_list_tail_node_from_length_two_list_correctly,
@@ -53,7 +135,7 @@ static void test_get_singly_linked_list_tail_node_from_empty_list_correctly()
 
     // act
     struct node *tail = get_singly_linked_list_tail_node(head);
-    
+
     // assert
     assert(tail == NULL);
 
@@ -152,7 +234,7 @@ static void test_create_length_two_list_from_length_one_list_using_append_singly
     struct node *head = malloc(sizeof(*head));
     int *data = malloc(sizeof(*data));
 
-    head->data = data;
+    head->data = (void *)data;
     head->next = NULL;
 
     // act
@@ -176,9 +258,9 @@ static void test_create_length_three_list_length_two_list_using_append_singly_li
     struct node *second = malloc(sizeof(*second));
     int *data = malloc(sizeof(*data));
 
-    head->data = data;
+    head->data = (void *)data;
     head->next = second;
-    second->data = data;
+    second->data = (void *)data;
     second->next = NULL;
 
     // act
@@ -205,6 +287,12 @@ int main(void)
     // is_singly_linked_list_empty
     test_is_singly_linked_list_empty_identifies_empty_list_correctly();
     test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly();
+
+    // get_singly_linked_list_length
+    test_get_singly_linked_list_length_of_empty_list_correctly();
+    test_get_singly_linked_list_length_of_single_node_list_correctly();
+    test_get_singly_linked_list_length_of_length_two_list_correctly();
+    test_get_singly_linked_list_length_of_length_three_list_correctly();
 
     // get_singly_linked_list_tail_node
     test_get_singly_linked_list_tail_node_from_empty_list_correctly();
