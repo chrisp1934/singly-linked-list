@@ -1,3 +1,12 @@
+//====================================================================================================
+//
+//  File Name:   singly_linked_list.h
+//  Author:      Christopher Priebe
+//  Repository:  singly-linked-list
+//  Date:        7/20/2022
+//
+//====================================================================================================
+
 #ifndef SINGLY_LINKED_LIST_H
 #define SINGLY_LINKED_LIST_H
 
@@ -48,6 +57,27 @@ struct node
 int is_singly_linked_list_empty(struct node *head);
 
 //====================================================================================================
+//  is_node_in_singly_linked_list
+//
+//  This function checks if a node holding a specified value exists in a singly linked list.
+//
+//  Arguments:
+//      struct node *head                          - The memory address of the first node in the
+//                                                   list.
+//      const void *data                           - The memory address of the value to search for in
+//                                                   the list.
+//      int (*compare)(const void *, const void *) - The comparison function used to find an
+//                                                   equivalent value in the list.
+//  Return Value:
+//      int - The position of the first occurence of the node containing the value in the list. -1
+//            is returned if the value is not found in the list.
+//
+//  Time Complexity:
+//      O(n) - Linear Complexity
+//====================================================================================================
+int is_node_in_singly_linked_list(struct node *head, const void *data, int (*compare)(const void *, const void *));
+
+//====================================================================================================
 //  get_singly_linked_list_length
 //
 //  This function gets the length of a singly linked list.
@@ -56,12 +86,12 @@ int is_singly_linked_list_empty(struct node *head);
 //      struct node *head - The memory address of the first node in the list.
 //
 //  Return Value:
-//      int - This function returns the length of the singly linked list.
+//      size_t - This function returns the length of the list.
 //
 //  Time Complexity:
 //      O(n) - Linear Time
 //====================================================================================================
-int get_singly_linked_list_length(struct node *head);
+size_t get_singly_linked_list_length(struct node *head);
 
 //====================================================================================================
 //  get_singly_linked_list_tail_node
@@ -72,8 +102,8 @@ int get_singly_linked_list_length(struct node *head);
 //      struct node *head - The memory address of the first node in the list.
 //
 //  Return Value:
-//      struct node * - This function returns the memory address of the tail node in a singly linked
-//                      after successful execution and NULL after an error.
+//      struct node * - This function returns the memory address of the tail node in a after
+//                      successful execution and NULL after an error.
 //
 //  Time Complexity:
 //      O(n) - Linear Time
@@ -102,8 +132,8 @@ struct node *get_singly_linked_list_tail_node(struct node *head);
 //                   singly linked list.
 //
 //  Return Value:
-//      struct node * - This function returns the memory address of the head of the singly linked
-//                      list after successful execution and NULL after an error.
+//      struct node * - This function returns the memory address of the head of the list after
+//                      successful execution and NULL after an error.
 //
 //  Time Complexity:
 //      O(1) - Constant Time
@@ -126,8 +156,8 @@ struct node *create_new_singly_linked_list_node(void *data);
 //      void *data        - The memory address of the data.
 //
 //  Return Value:
-//      struct node * - This function returns the memory address of the head of the singly linked
-//                      list after successful execution and NULL after an error.
+//      struct node * - This function returns the memory address of the head of the list after
+//                      successful execution and NULL after an error.
 //
 //  Time Complexity:
 //      O(n) - Linear Time
@@ -144,12 +174,35 @@ struct node *append_singly_linked_list_node_to_back(struct node *head, void *dat
 //      void *data        - The memory address of the data.
 //
 //  Return Value:
-//      struct node * - This function returns the memory address of the head of the singly linked
-//                      list after successful execution and NULL after an error.
+//      struct node * - This function returns the memory address of the head of the list after
+//                      successful execution and NULL after an error.
 //
 //  Time Complexity:
-//      O(1) - Contsant Time
+//      O(1) - Constant Time
 //====================================================================================================
 struct node *append_singly_linked_list_node_to_front(struct node *head, void *data);
+
+//====================================================================================================
+//
+//  FREEING LIST
+//
+//====================================================================================================
+
+//====================================================================================================
+//  free_singly_linked_list
+//
+//  This function deallocates memory for the nodes in a singly linked list. It does NOT deallocate
+//  memory for any of the data in the singly linked list.
+//
+//  Arguments:
+//      struct node *head - The memory address of the first node in the list.
+//
+//  Return Value:
+//      void
+//
+//  Time Complexity:
+//      O(n) - Linear Time
+//====================================================================================================
+void free_singly_linked_list(struct node *head);
 
 #endif
