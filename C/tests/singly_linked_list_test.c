@@ -673,6 +673,7 @@ static void test_free_singly_linked_list_with_single_node_list()
 {
     // arrange
     struct node *head = malloc(sizeof(*head));
+    head->next = NULL;
 
     // act
     free_singly_linked_list(head);
