@@ -57,7 +57,7 @@ struct node
 int is_singly_linked_list_empty(struct node *head);
 
 //====================================================================================================
-//  is_node_in_singly_linked_list
+//  is_data_in_singly_linked_list
 //
 //  This function checks if a node holding a specified value exists in a singly linked list.
 //
