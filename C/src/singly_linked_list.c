@@ -97,10 +97,10 @@ struct node *get_singly_linked_list_tail_node(struct node *head)
 //
 //====================================================================================================
 
-struct node *create_new_singly_linked_list_node(void *data)
+struct node *create_new_singly_linked_list_node(void *new_node_data)
 {
     struct node *n = malloc(sizeof(*n));
-    set_new_node_fields(n, data);
+    set_new_node_fields(n, new_node_data);
 
     return (n);
 }
@@ -111,30 +111,30 @@ struct node *create_new_singly_linked_list_node(void *data)
 //
 //====================================================================================================
 
-struct node *append_singly_linked_list_node_to_back(struct node *head, void *data)
+struct node *append_singly_linked_list_node_to_back(struct node *head, void *new_node_data)
 {
     if (is_singly_linked_list_empty(head))
     {
-        head = create_new_singly_linked_list_node(data);
+        head = create_new_singly_linked_list_node(new_node_data);
     }
     else
     {
         struct node *tail = get_singly_linked_list_tail_node(head);
-        tail->next = create_new_singly_linked_list_node(data);
+        tail->next = create_new_singly_linked_list_node(new_node_data);
     }
 
     return (head);
 }
 
-struct node *append_singly_linked_list_node_to_front(struct node *head, void *data)
+struct node *append_singly_linked_list_node_to_front(struct node *head, void *new_node_data)
 {
     if (is_singly_linked_list_empty(head))
     {
-        head = create_new_singly_linked_list_node(data);
+        head = create_new_singly_linked_list_node(new_node_data);
     }
     else
     {
-        struct node *new_node = create_new_singly_linked_list_node(data);
+        struct node *new_node = create_new_singly_linked_list_node(new_node_data);
         new_node->next = head;
         head = new_node;
     }

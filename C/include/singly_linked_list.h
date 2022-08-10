@@ -128,8 +128,8 @@ struct node *get_singly_linked_list_tail_node(struct node *head);
 //  This function creates a new singly linked list.
 //
 //  Arguments:
-//      void *data - The memory address of the data to be placed in the first node (head) of the 
-//                   singly linked list.
+//      void *new_node_data - The memory address of the data to be placed in the first node (head) of 
+//                            the singly linked list.
 //
 //  Return Value:
 //      struct node * - This function returns the memory address of the head of the list after
@@ -138,7 +138,7 @@ struct node *get_singly_linked_list_tail_node(struct node *head);
 //  Time Complexity:
 //      O(1) - Constant Time
 //====================================================================================================
-struct node *create_new_singly_linked_list_node(void *data);
+struct node *create_new_singly_linked_list_node(void *new_node_data);
 
 //====================================================================================================
 //
@@ -152,8 +152,8 @@ struct node *create_new_singly_linked_list_node(void *data);
 //  This function adds a new node to a singly linked list at the end of the list.
 //
 //  Arguments:
-//      struct node *head - The memory address of the first node in the list.
-//      void *data        - The memory address of the data.
+//      struct node *head   - The memory address of the first node in the list.
+//      void *new_node_data - The memory address of the data.
 //
 //  Return Value:
 //      struct node * - This function returns the memory address of the head of the list after
@@ -162,7 +162,7 @@ struct node *create_new_singly_linked_list_node(void *data);
 //  Time Complexity:
 //      O(n) - Linear Time
 //====================================================================================================
-struct node *append_singly_linked_list_node_to_back(struct node *head, void *data);
+struct node *append_singly_linked_list_node_to_back(struct node *head, void *new_node_data);
 
 //====================================================================================================
 //  append_singly_linked_list_node_to_front
@@ -170,8 +170,8 @@ struct node *append_singly_linked_list_node_to_back(struct node *head, void *dat
 //  This function adds a new node to a singly linked list at the front of the list.
 //
 //  Arguments:
-//      struct node *head - The memory address of the first node in the list.
-//      void *data        - The memory address of the data.
+//      struct node *head   - The memory address of the first node in the list.
+//      void *new_node_data - The memory address of the data.
 //
 //  Return Value:
 //      struct node * - This function returns the memory address of the head of the list after
@@ -180,7 +180,7 @@ struct node *append_singly_linked_list_node_to_back(struct node *head, void *dat
 //  Time Complexity:
 //      O(1) - Constant Time
 //====================================================================================================
-struct node *append_singly_linked_list_node_to_front(struct node *head, void *data);
+struct node *append_singly_linked_list_node_to_front(struct node *head, void *new_node_data);
 
 //====================================================================================================
 //
