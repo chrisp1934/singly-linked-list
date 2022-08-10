@@ -295,21 +295,21 @@ static void test_is_data_in_singly_linked_list_identifies_value_found_in_length_
 }
 
 //====================================================================================================
-//  test_get_singly_linked_list_length_of_empty_list_correctly,
-//  test_get_singly_linked_list_length_of_single_node_list_correctly,
-//  test_get_singly_linked_list_length_of_length_two_list_correctly,
-//  test_get_singly_linked_list_length_of_length_three_list_correctly
+//  test_get_singly_linked_list_length_iteratively_of_empty_list_correctly,
+//  test_get_singly_linked_list_length_iteratively_of_single_node_list_correctly,
+//  test_get_singly_linked_list_length_iteratively_of_length_two_list_correctly,
+//  test_get_singly_linked_list_length_iteratively_of_length_three_list_correctly
 //
-//  The unit tests for get_singly_linked_list_length
+//  The unit tests for get_singly_linked_list_length_iteratively
 //====================================================================================================
 
-static void test_get_singly_linked_list_length_of_empty_list_correctly()
+static void test_get_singly_linked_list_length_iteratively_of_empty_list_correctly()
 {
     // arrange
     struct node *head = NULL;
 
     // act
-    size_t length = get_singly_linked_list_length(head);
+    size_t length = get_singly_linked_list_length_iteratively(head);
 
     // assert
     assert(length == 0);
@@ -317,14 +317,14 @@ static void test_get_singly_linked_list_length_of_empty_list_correctly()
     // teardown
 }
 
-static void test_get_singly_linked_list_length_of_single_node_list_correctly()
+static void test_get_singly_linked_list_length_iteratively_of_single_node_list_correctly()
 {
     // arrange
     struct node *head = malloc(sizeof(*head));
     head->next = NULL;
 
     // act
-    size_t length = get_singly_linked_list_length(head);
+    size_t length = get_singly_linked_list_length_iteratively(head);
 
     // assert
     assert(length == 1);
@@ -333,7 +333,7 @@ static void test_get_singly_linked_list_length_of_single_node_list_correctly()
     free(head);
 }
 
-static void test_get_singly_linked_list_length_of_length_two_list_correctly()
+static void test_get_singly_linked_list_length_iteratively_of_length_two_list_correctly()
 {
     // arrange
     struct node *head = malloc(sizeof(*head));
@@ -343,7 +343,7 @@ static void test_get_singly_linked_list_length_of_length_two_list_correctly()
     tail->next = NULL;
 
     // act
-    size_t length = get_singly_linked_list_length(head);
+    size_t length = get_singly_linked_list_length_iteratively(head);
 
     // assert
     assert(length == 2);
@@ -353,7 +353,7 @@ static void test_get_singly_linked_list_length_of_length_two_list_correctly()
     free(tail);
 }
 
-static void test_get_singly_linked_list_length_of_length_three_list_correctly()
+static void test_get_singly_linked_list_length_iteratively_of_length_three_list_correctly()
 {
     // arrange
     struct node *head = malloc(sizeof(*head));
@@ -365,7 +365,7 @@ static void test_get_singly_linked_list_length_of_length_three_list_correctly()
     tail->next = NULL;
 
     // act
-    size_t length = get_singly_linked_list_length(head);
+    size_t length = get_singly_linked_list_length_iteratively(head);
 
     // assert
     assert(length == 3);
@@ -723,11 +723,11 @@ int main(void)
     test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence();
     test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence();
 
-    // get_singly_linked_list_length
-    test_get_singly_linked_list_length_of_empty_list_correctly();
-    test_get_singly_linked_list_length_of_single_node_list_correctly();
-    test_get_singly_linked_list_length_of_length_two_list_correctly();
-    test_get_singly_linked_list_length_of_length_three_list_correctly();
+    // get_singly_linked_list_length_iteratively
+    test_get_singly_linked_list_length_iteratively_of_empty_list_correctly();
+    test_get_singly_linked_list_length_iteratively_of_single_node_list_correctly();
+    test_get_singly_linked_list_length_iteratively_of_length_two_list_correctly();
+    test_get_singly_linked_list_length_iteratively_of_length_three_list_correctly();
 
     // SETTING LIST PROPERTIES
 

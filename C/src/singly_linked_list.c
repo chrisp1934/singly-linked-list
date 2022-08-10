@@ -59,7 +59,7 @@ int is_data_in_singly_linked_list(struct node *head, const void *data, int (*com
     return (data_position);
 }
 
-size_t get_singly_linked_list_length(struct node *head)
+size_t get_singly_linked_list_length_iteratively(struct node *head)
 {
     size_t length = 0;
 

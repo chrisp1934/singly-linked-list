@@ -78,7 +78,7 @@ int is_singly_linked_list_empty(struct node *head);
 int is_data_in_singly_linked_list(struct node *head, const void *data, int (*compare)(const void *, const void *));
 
 //====================================================================================================
-//  get_singly_linked_list_length
+//  get_singly_linked_list_length_iteratively
 //
 //  This function gets the length of a singly linked list.
 //
@@ -91,7 +91,7 @@ int is_data_in_singly_linked_list(struct node *head, const void *data, int (*com
 //  Time Complexity:
 //      O(n) - Linear Time
 //====================================================================================================
-size_t get_singly_linked_list_length(struct node *head);
+size_t get_singly_linked_list_length_iteratively(struct node *head);
 
 //====================================================================================================
 //  get_singly_linked_list_tail_node
