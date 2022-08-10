@@ -377,6 +377,88 @@ static void test_get_singly_linked_list_length_iteratively_of_length_three_list_
 }
 
 //====================================================================================================
+//  test_get_singly_linked_list_length_recursively_of_empty_list_correctly,
+//  test_get_singly_linked_list_length_recursively_of_single_node_list_correctly,
+//  test_get_singly_linked_list_length_recursively_of_length_two_list_correctly,
+//  test_get_singly_linked_list_length_recursively_of_length_three_list_correctly
+//
+//  The unit tests for get_singly_linked_list_length_recursively
+//====================================================================================================
+
+static void test_get_singly_linked_list_length_recursively_of_empty_list_correctly()
+{
+    // arrange
+    struct node *head = NULL;
+
+    // act
+    size_t length = get_singly_linked_list_length_recursively(head);
+
+    // assert
+    assert(length == 0);
+
+    // teardown
+}
+
+static void test_get_singly_linked_list_length_recursively_of_single_node_list_correctly()
+{
+    // arrange
+    struct node *head = malloc(sizeof(*head));
+    head->next = NULL;
+
+    // act
+    size_t length = get_singly_linked_list_length_recursively(head);
+
+    // assert
+    assert(length == 1);
+
+    // teardown
+    free(head);
+}
+
+static void test_get_singly_linked_list_length_recursively_of_length_two_list_correctly()
+{
+    // arrange
+    struct node *head = malloc(sizeof(*head));
+    struct node *tail = malloc(sizeof(*tail));
+
+    head->next = tail;
+    tail->next = NULL;
+
+    // act
+    size_t length = get_singly_linked_list_length_recursively(head);
+
+    // assert
+    assert(length == 2);
+
+    // teardown
+    free(head);
+    free(tail);
+}
+
+static void test_get_singly_linked_list_length_recursively_of_length_three_list_correctly()
+{
+    // arrange
+    struct node *head = malloc(sizeof(*head));
+    struct node *middle = malloc(sizeof(*middle));
+    struct node *tail = malloc(sizeof(*tail));
+
+    head->next = middle;
+    middle->next = tail;
+    tail->next = NULL;
+
+    // act
+    size_t length = get_singly_linked_list_length_recursively(head);
+
+    // assert
+    assert(length == 3);
+
+    // teardown
+    free(head);
+    free(middle);
+    free(tail);
+}
+
+//====================================================================================================
 //  test_get_singly_linked_list_tail_node_from_empty_list_correctly,
 //  test_get_singly_linked_list_tail_node_from_single_node_list_correctly,
 //  test_get_singly_linked_list_tail_node_from_length_two_list_correctly,
@@ -729,6 +811,18 @@ int main(void)
     test_get_singly_linked_list_length_iteratively_of_length_two_list_correctly();
     test_get_singly_linked_list_length_iteratively_of_length_three_list_correctly();
 
+    // get_singly_linked_list_length_recursively
+    test_get_singly_linked_list_length_recursively_of_empty_list_correctly();
+    test_get_singly_linked_list_length_recursively_of_single_node_list_correctly();
+    test_get_singly_linked_list_length_recursively_of_length_two_list_correctly();
+    test_get_singly_linked_list_length_recursively_of_length_three_list_correctly();
+
+    // get_singly_linked_list_tail_node
+    test_get_singly_linked_list_tail_node_from_empty_list_correctly();
+    test_get_singly_linked_list_tail_node_from_single_node_list_correctly();
+    test_get_singly_linked_list_tail_node_from_length_two_list_correctly();
+    test_get_singly_linked_list_tail_node_from_length_three_list_correctly();
+
     // SETTING LIST PROPERTIES
 
     // BASIC NODE MODIFICATIONS
@@ -738,12 +832,6 @@ int main(void)
     test_create_new_singly_linked_list_node_with_signed_int_data();
 
     // BASIC LIST MODIFICATIONS
-
-    // get_singly_linked_list_tail_node
-    test_get_singly_linked_list_tail_node_from_empty_list_correctly();
-    test_get_singly_linked_list_tail_node_from_single_node_list_correctly();
-    test_get_singly_linked_list_tail_node_from_length_two_list_correctly();
-    test_get_singly_linked_list_tail_node_from_length_three_list_correctly();
 
     // append_singly_linked_list_node_to_back
     test_create_single_node_list_from_empty_list_using_append_singly_linked_list_node_to_back();

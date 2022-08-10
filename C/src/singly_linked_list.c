@@ -72,6 +72,18 @@ size_t get_singly_linked_list_length_iteratively(struct node *head)
     return (length);
 }
 
+size_t get_singly_linked_list_length_recursively(struct node *head)
+{
+    if (head == NULL)
+    {
+        return (0);
+    }
+    else
+    {
+        return (get_singly_linked_list_length_recursively(head->next) + 1);
+    }
+}
+
 struct node *get_singly_linked_list_tail_node(struct node *head)
 {
     if (!is_singly_linked_list_empty(head))

@@ -80,7 +80,7 @@ int is_data_in_singly_linked_list(struct node *head, const void *data, int (*com
 //====================================================================================================
 //  get_singly_linked_list_length_iteratively
 //
-//  This function gets the length of a singly linked list.
+//  This function gets the length of a singly linked list iteratively.
 //
 //  Arguments:
 //      struct node *head - The memory address of the first node in the list.
@@ -92,6 +92,22 @@ int is_data_in_singly_linked_list(struct node *head, const void *data, int (*com
 //      O(n) - Linear Time
 //====================================================================================================
 size_t get_singly_linked_list_length_iteratively(struct node *head);
+
+//====================================================================================================
+//  get_singly_linked_list_length_recursively
+//
+//  This function gets the length of a singly linked list recursively.
+//
+//  Arguments:
+//      struct node *head - The memory address of the first node in the list.
+//
+//  Return Value:
+//      size_t - This function returns the length of the list.
+//
+//  Time Complexity:
+//      O(n) - Linear Time
+//====================================================================================================
+size_t get_singly_linked_list_length_recursively(struct node *head);
 
 //====================================================================================================
 //  get_singly_linked_list_tail_node
