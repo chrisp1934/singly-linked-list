@@ -140,17 +140,17 @@ static void test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly
 }
 
 //====================================================================================================
-//  test_is_node_in_singly_linked_list_identifies_value_not_found_in_empty_list,
-//  test_is_node_in_singly_linked_list_identifies_value_found_in_single_node_list,
-//  test_is_node_in_singly_linked_list_identifies_value_not_found_in_single_node_list,
-//  test_is_node_in_singly_linked_list_identifies_value_not_found_in_length_four_list,
-//  test_is_node_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence,
-//  test_is_node_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence
+//  test_is_data_in_singly_linked_list_identifies_value_not_found_in_empty_list,
+//  test_is_data_in_singly_linked_list_identifies_value_found_in_single_node_list,
+//  test_is_data_in_singly_linked_list_identifies_value_not_found_in_single_node_list,
+//  test_is_data_in_singly_linked_list_identifies_value_not_found_in_length_four_list,
+//  test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence,
+//  test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence
 //
-//  The unit tests for is_node_in_singly_linked_list
+//  The unit tests for is_data_in_singly_linked_list
 //====================================================================================================
 
-static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_empty_list()
+static void test_is_data_in_singly_linked_list_identifies_value_not_found_in_empty_list()
 {
     // arrange
     int *test_values = NULL;
@@ -163,7 +163,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_emp
     *int_value_pointer = 5;
 
     // act
-    int position = is_node_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
+    int position = is_data_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
 
     // assert
     assert(position == -1);
@@ -174,7 +174,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_emp
     free(int_value_pointer);
 }
 
-static void test_is_node_in_singly_linked_list_identifies_value_found_in_single_node_list()
+static void test_is_data_in_singly_linked_list_identifies_value_found_in_single_node_list()
 {
     // arrange
     int test_values[] = {15};
@@ -187,7 +187,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_found_in_single_
     *int_value_pointer = 15;
 
     // act
-    int position = is_node_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
+    int position = is_data_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
 
     // assert
     assert(position == 0);
@@ -198,7 +198,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_found_in_single_
     free(int_value_pointer);
 }
 
-static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_single_node_list()
+static void test_is_data_in_singly_linked_list_identifies_value_not_found_in_single_node_list()
 {
     // arrange
     int test_values[] = {25};
@@ -211,7 +211,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_sin
     *int_value_pointer = 15;
 
     // act
-    int position = is_node_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
+    int position = is_data_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
 
     // assert
     assert(position == -1);
@@ -222,7 +222,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_sin
     free(int_value_pointer);
 }
 
-static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_length_four_list()
+static void test_is_data_in_singly_linked_list_identifies_value_not_found_in_length_four_list()
 {
     // arrange
     int test_values[] = {25, 93, 104, 20};
@@ -235,7 +235,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_len
     *int_value_pointer = 8;
 
     // act
-    int position = is_node_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
+    int position = is_data_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
 
     // assert
     assert(position == -1);
@@ -246,7 +246,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_not_found_in_len
     free(int_value_pointer);
 }
 
-static void test_is_node_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence()
+static void test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence()
 {
     // arrange
     int test_values[] = {25, 93, 104, 20};
@@ -259,7 +259,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_found_in_length_
     *int_value_pointer = 104;
 
     // act
-    int position = is_node_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
+    int position = is_data_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
 
     // assert
     assert(position == 2);
@@ -270,7 +270,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_found_in_length_
     free(int_value_pointer);
 }
 
-static void test_is_node_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence()
+static void test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence()
 {
     // arrange
     int test_values[] = {25, 83, 83, 83};
@@ -283,7 +283,7 @@ static void test_is_node_in_singly_linked_list_identifies_value_found_in_length_
     *int_value_pointer = 83;
 
     // act
-    int position = is_node_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
+    int position = is_data_in_singly_linked_list(head, (void *)int_value_pointer, compare_int_ascending);
 
     // assert
     assert(position == 1);
@@ -715,13 +715,13 @@ int main(void)
     test_is_singly_linked_list_empty_identifies_empty_list_correctly();
     test_is_singly_linked_list_emtpy_identifies_non_empty_list_correctly();
 
-    // is_node_in_singly_linked_list
-    test_is_node_in_singly_linked_list_identifies_value_not_found_in_empty_list();
-    test_is_node_in_singly_linked_list_identifies_value_found_in_single_node_list();
-    test_is_node_in_singly_linked_list_identifies_value_not_found_in_single_node_list();
-    test_is_node_in_singly_linked_list_identifies_value_not_found_in_length_four_list();
-    test_is_node_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence();
-    test_is_node_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence();
+    // is_data_in_singly_linked_list
+    test_is_data_in_singly_linked_list_identifies_value_not_found_in_empty_list();
+    test_is_data_in_singly_linked_list_identifies_value_found_in_single_node_list();
+    test_is_data_in_singly_linked_list_identifies_value_not_found_in_single_node_list();
+    test_is_data_in_singly_linked_list_identifies_value_not_found_in_length_four_list();
+    test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_unique_occurrence();
+    test_is_data_in_singly_linked_list_identifies_value_found_in_length_four_list_with_repeat_occurrence();
 
     // get_singly_linked_list_length
     test_get_singly_linked_list_length_of_empty_list_correctly();

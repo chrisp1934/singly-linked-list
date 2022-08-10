@@ -75,7 +75,7 @@ int is_singly_linked_list_empty(struct node *head);
 //  Time Complexity:
 //      O(n) - Linear Complexity
 //====================================================================================================
-int is_node_in_singly_linked_list(struct node *head, const void *data, int (*compare)(const void *, const void *));
+int is_data_in_singly_linked_list(struct node *head, const void *data, int (*compare)(const void *, const void *));
 
 //====================================================================================================
 //  get_singly_linked_list_length

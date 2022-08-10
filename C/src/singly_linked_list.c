@@ -37,7 +37,7 @@ int is_singly_linked_list_empty(struct node *head)
     return (head == NULL);
 }
 
-int is_node_in_singly_linked_list(struct node *head, const void *data, int (*compare)(const void *, const void *))
+int is_data_in_singly_linked_list(struct node *head, const void *data, int (*compare)(const void *, const void *))
 {
     int current_position = 0;
     int data_position = -1;
