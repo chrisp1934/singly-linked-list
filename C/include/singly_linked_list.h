@@ -128,12 +128,6 @@ struct node *get_singly_linked_list_tail_node(struct node *head);
 
 //====================================================================================================
 //
-//  SETTING LIST PROPERTIES
-//
-//====================================================================================================
-
-//====================================================================================================
-//
 //  BASIC NODE MODIFICATIONS
 //
 //====================================================================================================
@@ -197,6 +191,26 @@ struct node *append_singly_linked_list_node_to_back(struct node *head, void *new
 //      O(1) - Constant Time
 //====================================================================================================
 struct node *append_singly_linked_list_node_to_front(struct node *head, void *new_node_data);
+
+//====================================================================================================
+//  append_singly_linked_list_node_after_node
+//
+//  This function adds a new node to a singly linked list after the node at the address passed.
+//
+//  Arguments:
+//      struct node *head          - The memory address of the first node in the list.
+//      void *new_node_data        - The memory address of the data.
+//      struct node *selected_node - The address of the node for which the new node will be placed
+//                                   after.
+//
+//  Return Value:
+//      struct node * - This function returns the memory address of the head of the list after
+//                      successful execution and NULL after an error.
+//
+//  Time Complexity:
+//      O(n) - Constant Time
+//====================================================================================================
+struct node *append_singly_linked_list_node_after_node(struct node *head, void *new_node_data, struct node *selected_node);
 
 //====================================================================================================
 //

@@ -252,7 +252,7 @@ static void test_is_data_in_singly_linked_list_identifies_value_found_in_length_
     int test_values[] = {25, 93, 104, 20};
     int test_values_size = 4;
 
-   void **data_pointer_array = create_test_array_from_int_array(test_values, test_values_size);
+    void **data_pointer_array = create_test_array_from_int_array(test_values, test_values_size);
     struct node *head = create_list_from_array(data_pointer_array, test_values_size);
 
     int *int_value_pointer = malloc(sizeof(*int_value_pointer));
@@ -542,12 +542,6 @@ static void test_get_singly_linked_list_tail_node_from_length_three_list_correct
 
 //====================================================================================================
 //
-//  SETTING LIST PROPERTIES
-//
-//====================================================================================================
-
-//====================================================================================================
-//
 //  BASIC NODE MODIFICATIONS
 //
 //====================================================================================================
@@ -730,6 +724,169 @@ static void test_create_length_two_list_from_length_one_list_using_append_singly
 }
 
 //====================================================================================================
+//  test_create_single_node_list_using_append_singly_linked_list_node_after_node_by_passing_null,
+//  test_add_new_node_to_back_of_single_node_list_using_append_singly_linked_list_node_after_node,
+//  test_add_new_node_to_back_of_length_four_list_correctly_using_append_singly_linked_list_node_after_node,
+//  test_add_new_node_to_length_four_list_in_middle_using_append_singly_linked_list_node_after_node,
+//  test_no_addition_of_node_when_node_nonexistant_using_append_singly_linked_list_node_after_node
+//
+//  The unit tests for append_singly_linked_list_node_after_node
+//====================================================================================================
+
+static void test_create_single_node_list_using_append_singly_linked_list_node_after_node_by_passing_null()
+{
+    // arrange
+    struct node *head = NULL;
+    int *data = malloc(sizeof(*data));
+    *data = 8;
+
+    // act
+    head = append_singly_linked_list_node_after_node(head, (void *)data, head);
+
+    // assert
+    assert(head != NULL);
+    assert(*((int *)head->data) == 8);
+    assert(head->next == NULL);
+
+    // teardown
+    free(head);
+}
+
+static void test_add_new_node_to_back_of_single_node_list_using_append_singly_linked_list_node_after_node()
+{
+    // arrange
+    int test_values[] = {25};
+    int test_values_size = 1;
+
+    void **data_pointer_array = create_test_array_from_int_array(test_values, test_values_size);
+    struct node *head = create_list_from_array(data_pointer_array, test_values_size);
+
+    int *data = malloc(sizeof(*data));
+    *data = 15;
+
+    // act
+    head = append_singly_linked_list_node_after_node(head, (void *)data, head);
+
+    // assert
+    assert(head != NULL);
+    assert(*((int *)head->data) == 25);
+    assert(head->next != NULL);
+    assert(*((int *)head->next->data) == 15);
+    assert(head->next->next == NULL);
+
+    // teardown
+    free_list(head);
+    free_test_array(data_pointer_array, test_values_size);
+    free(data);
+}
+
+static void test_add_new_node_to_back_of_length_four_list_correctly_using_append_singly_linked_list_node_after_node()
+{
+    // arrange
+    int test_values[] = {25, 35, 45, 55};
+    int test_values_size = 4;
+
+    void **data_pointer_array = create_test_array_from_int_array(test_values, test_values_size);
+    struct node *head = create_list_from_array(data_pointer_array, test_values_size);
+
+    int *data = malloc(sizeof(*data));
+    *data = 15;
+
+    // act
+    head = append_singly_linked_list_node_after_node(head, (void *)data, head->next->next->next);
+
+    // assert
+    assert(head != NULL);
+    assert(*((int *)head->data) == 25);
+    assert(head->next != NULL);
+    assert(*((int *)head->next->data) == 35);
+    assert(head->next->next != NULL);
+    assert(*((int *)head->next->next->data) == 45);
+    assert(head->next->next->next != NULL);
+    assert(*((int *)head->next->next->next->data) == 55);
+    assert(head->next->next->next->next != NULL);
+    assert(*((int *)head->next->next->next->next->data) == 15);
+    assert(head->next->next->next->next->next == NULL);
+
+    // teardown
+    free_list(head);
+    free_test_array(data_pointer_array, test_values_size);
+    free(data);
+}
+
+static void test_add_new_node_to_length_four_list_in_middle_using_append_singly_linked_list_node_after_node()
+{
+    // arrange
+    int test_values[] = {25, 35, 45, 55};
+    int test_values_size = 4;
+
+    void **data_pointer_array = create_test_array_from_int_array(test_values, test_values_size);
+    struct node *head = create_list_from_array(data_pointer_array, test_values_size);
+
+    int *data = malloc(sizeof(*data));
+    *data = 15;
+
+    // act
+    head = append_singly_linked_list_node_after_node(head, (void *)data, head->next);
+
+    // assert
+    assert(head != NULL);
+    assert(*((int *)head->data) == 25);
+    assert(head->next != NULL);
+    assert(*((int *)head->next->data) == 35);
+    assert(head->next->next != NULL);
+    assert(*((int *)head->next->next->data) == 15);
+    assert(head->next->next->next != NULL);
+    assert(*((int *)head->next->next->next->data) == 45);
+    assert(head->next->next->next->next != NULL);
+    assert(*((int *)head->next->next->next->next->data) == 55);
+    assert(head->next->next->next->next->next == NULL);
+
+    // teardown
+    free_list(head);
+    free_test_array(data_pointer_array, test_values_size);
+    free(data);
+}
+
+static void test_no_addition_of_node_when_node_nonexistant_using_append_singly_linked_list_node_after_node()
+{
+    // arrange
+    int test_values[] = {25, 35, 45, 55};
+    int test_values_size = 4;
+
+    void **data_pointer_array = create_test_array_from_int_array(test_values, test_values_size);
+    struct node *head = create_list_from_array(data_pointer_array, test_values_size);
+
+    int *data = malloc(sizeof(*data));
+    *data = 15;
+
+    // act
+    head = append_singly_linked_list_node_after_node(head, (void *)data, NULL);
+
+    // assert
+    assert(head != NULL);
+    assert(*((int *)head->data) == 25);
+    assert(head->next != NULL);
+    assert(*((int *)head->next->data) == 35);
+    assert(head->next->next != NULL);
+    assert(*((int *)head->next->next->data) == 45);
+    assert(head->next->next->next != NULL);
+    assert(*((int *)head->next->next->next->data) == 55);
+    assert(head->next->next->next->next == NULL);
+
+    // teardown
+    free_list(head);
+    free_test_array(data_pointer_array, test_values_size);
+    free(data);
+}
+
+//====================================================================================================
+//
+//  FREEING LIST
+//
+//====================================================================================================
+
+//====================================================================================================
 //  test_free_singly_linked_list_with_empty_list,
 //  test_free_singly_linked_list_with_single_node_list,
 //  test_free_singly_linked_list_with_length_four_list
@@ -841,6 +998,13 @@ int main(void)
     // append_singly_linked_list_node_to_front
     test_create_single_node_list_from_empty_list_using_append_singly_linked_list_node_to_front();
     test_create_length_two_list_from_length_one_list_using_append_singly_linked_list_node_to_front();
+
+    // append_singly_linked_list_node_after_node
+    test_create_single_node_list_using_append_singly_linked_list_node_after_node_by_passing_null();
+    test_add_new_node_to_back_of_single_node_list_using_append_singly_linked_list_node_after_node();
+    test_add_new_node_to_back_of_length_four_list_correctly_using_append_singly_linked_list_node_after_node();
+    test_add_new_node_to_length_four_list_in_middle_using_append_singly_linked_list_node_after_node();
+    test_no_addition_of_node_when_node_nonexistant_using_append_singly_linked_list_node_after_node();
 
     // FREEING LIST
 
